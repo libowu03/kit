@@ -10,6 +10,6 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args) {
-        System.out.print(EncodedUtils.convertStringToUTF8("你好"));
+        System.out.print(EncodedUtils.urlTostr("%C4%E3%BA%C3","GB2312"));
     }
 }

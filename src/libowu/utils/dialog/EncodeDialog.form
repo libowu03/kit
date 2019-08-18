@@ -81,7 +81,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="f54ee" layout-manager="GridLayoutManager" row-count="2" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="f54ee" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="UTF-8"/>
@@ -91,7 +91,7 @@
                 <children>
                   <component id="f236f" class="javax.swing.JTextArea" binding="textArea3" default-binding="true">
                     <constraints>
-                      <grid row="0" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="0" column="0" row-span="3" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
@@ -99,7 +99,7 @@
                   </component>
                   <component id="3af5d" class="javax.swing.JTextArea" binding="textArea4" default-binding="true">
                     <constraints>
-                      <grid row="0" column="2" row-span="2" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="0" column="2" row-span="3" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
@@ -115,15 +115,23 @@
                   </component>
                   <component id="a1030" class="javax.swing.JButton" binding="cnToUtf">
                     <constraints>
-                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="中文转UTF-8"/>
                     </properties>
                   </component>
+                  <component id="738ce" class="javax.swing.JButton" binding="utfCopy">
+                    <constraints>
+                      <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="复制"/>
+                    </properties>
+                  </component>
                 </children>
               </grid>
-              <grid id="f1c65" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="f1c65" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="URL"/>
@@ -133,23 +141,27 @@
                 <children>
                   <component id="887a1" class="javax.swing.JTextArea" binding="textArea5" default-binding="true">
                     <constraints>
-                      <grid row="0" column="0" row-span="3" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="0" column="0" row-span="4" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <text value="输出"/>
+                    </properties>
                   </component>
                   <component id="f6cde" class="javax.swing.JTextArea" binding="textArea6" default-binding="true">
                     <constraints>
-                      <grid row="0" column="2" row-span="3" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
+                      <grid row="0" column="2" row-span="4" col-span="1" vsize-policy="6" hsize-policy="6" anchor="0" fill="3" indent="0" use-parent-layout="false">
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <text value="输出"/>
+                    </properties>
                   </component>
                   <component id="1f2c7" class="javax.swing.JButton" binding="deCodeing">
                     <constraints>
-                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                      <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                     </constraints>
                     <properties>
                       <text value="解码"/>
@@ -172,6 +184,14 @@
                         <item value="UTF-8"/>
                         <item value="GB2312"/>
                       </model>
+                    </properties>
+                  </component>
+                  <component id="ddb65" class="javax.swing.JButton" binding="urlCopy">
+                    <constraints>
+                      <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+                    </constraints>
+                    <properties>
+                      <text value="复制"/>
                     </properties>
                   </component>
                 </children>

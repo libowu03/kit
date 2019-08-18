@@ -29,6 +29,9 @@ public class EncodeDialog extends JDialog {
     private JButton encode;
     private JComboBox comboBox1;
     private JButton copyUnicode;
+    private JButton urlCopy;
+    private JButton utfCopy;
+    private String code = "UTF-8";
 
     public EncodeDialog() {
         setContentPane(contentPane);
@@ -83,6 +86,48 @@ public class EncodeDialog extends JDialog {
                 Transferable tText = new StringSelection(outUnicode.getText());
                 clip.setContents(tText, null);
                 Messages.showInfoMessage("复制成功", "提示");
+            }
+        });
+        encode.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String result = EncodedUtils.strToUrl(textArea5.getText(), code);
+                textArea6.setText(result);
+            }
+        });
+        deCodeing.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String result = EncodedUtils.urlTostr(textArea5.getText(), code);
+                textArea6.setText(result);
+            }
+        });
+        comboBox1.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                code = (String) e.getItem();
+                System.out.println("选择编码为：" + code);
+            }
+        });
+        urlCopy.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
+                Transferable tText = new StringSelection(textArea6.getText());
+                clip.setContents(tText, null);
+                Messages.showInfoMessage("复制成功", "提示");
+            }
+        });
+        textArea5.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                textArea5.setText("");
+            }
+
+            @Override
+            public void focusLost(FocusEvent e) {
+                super.focusLost(e);
             }
         });
     }
@@ -154,15 +199,17 @@ public class EncodeDialog extends JDialog {
         cnToUtf.setText("中文转UTF-8");
         panel3.add(cnToUtf, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel4 = new JPanel();
-        panel4.setLayout(new GridLayoutManager(3, 3, new Insets(0, 0, 0, 0), -1, -1));
+        panel4.setLayout(new GridLayoutManager(4, 3, new Insets(0, 0, 0, 0), -1, -1));
         tabbedPane1.addTab("URL", panel4);
         textArea5 = new JTextArea();
-        panel4.add(textArea5, new GridConstraints(0, 0, 3, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        textArea5.setText("输出");
+        panel4.add(textArea5, new GridConstraints(0, 0, 4, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         textArea6 = new JTextArea();
-        panel4.add(textArea6, new GridConstraints(0, 2, 3, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
+        textArea6.setText("输出");
+        panel4.add(textArea6, new GridConstraints(0, 2, 4, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         deCodeing = new JButton();
         deCodeing.setText("解码");
-        panel4.add(deCodeing, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        panel4.add(deCodeing, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         encode = new JButton();
         encode.setText("编码");
         panel4.add(encode, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -172,6 +219,9 @@ public class EncodeDialog extends JDialog {
         defaultComboBoxModel1.addElement("GB2312");
         comboBox1.setModel(defaultComboBoxModel1);
         panel4.add(comboBox1, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        urlCopy = new JButton();
+        urlCopy.setText("复制");
+        panel4.add(urlCopy, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
     }
 
     /**
