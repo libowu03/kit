@@ -12,7 +12,6 @@ import java.util.Date;
 
 public class LinghitUtil extends JDialog {
     private JPanel contentPane;
-    private JButton buttonCancel;
     private JButton changeLanguage;
     private JButton timeStamp;
     private JButton changeHex;
@@ -33,13 +32,6 @@ public class LinghitUtil extends JDialog {
         } catch (AWTException a) {
             System.out.println("错误" + ":" + a.getMessage());
         }
-
-
-        buttonCancel.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                onCancel();
-            }
-        });
 
         // call onCancel() when cross is clicked
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -168,7 +160,7 @@ public class LinghitUtil extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PostAndGetDialog dialog = new PostAndGetDialog();
-                dialog.setSize(1200, 900);
+                dialog.setSize(1200, 500);
                 setPosition(dialog, 1200, 900);
                 dialog.setLocationRelativeTo(null);//居中
                 dialog.pack();
@@ -242,9 +234,12 @@ public class LinghitUtil extends JDialog {
         encodeBtn = new JButton();
         encodeBtn.setText("编码工具");
         panel1.add(encodeBtn, new GridConstraints(2, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
-        buttonCancel = new JButton();
-        buttonCancel.setText("退出");
-        panel1.add(buttonCancel, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        postAndGet = new JButton();
+        postAndGet.setText("在线请求");
+        panel1.add(postAndGet, new GridConstraints(3, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        fileUtil = new JButton();
+        fileUtil.setText("文本工具");
+        panel1.add(fileUtil, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label1 = new JLabel();
         label1.setText("工具集合");
         contentPane.add(label1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -256,4 +251,5 @@ public class LinghitUtil extends JDialog {
     public JComponent $$$getRootComponent$$$() {
         return contentPane;
     }
+
 }
