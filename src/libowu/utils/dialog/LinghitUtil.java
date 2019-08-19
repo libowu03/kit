@@ -160,8 +160,8 @@ public class LinghitUtil extends JDialog {
             @Override
             public void actionPerformed(ActionEvent e) {
                 PostAndGetDialog dialog = new PostAndGetDialog();
-                dialog.setSize(1200, 500);
-                setPosition(dialog, 1200, 900);
+                dialog.setSize(1200, 700);
+                setPosition(dialog, 1200, 700);
                 dialog.setLocationRelativeTo(null);//居中
                 dialog.pack();
                 dialog.setVisible(true);

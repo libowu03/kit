@@ -34,7 +34,7 @@
                   <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="OK"/>
+                  <text value="开始请求"/>
                 </properties>
               </component>
               <component id="5723f" class="javax.swing.JButton" binding="buttonCancel">
@@ -42,7 +42,7 @@
                   <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
                 </constraints>
                 <properties>
-                  <text value="Cancel"/>
+                  <text value="取消"/>
                 </properties>
               </component>
             </children>
@@ -53,7 +53,7 @@
         <margin top="0" left="0" bottom="0" right="0"/>
         <constraints>
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-            <preferred-size width="1200" height="400"/>
+            <preferred-size width="1200" height="600"/>
           </grid>
         </constraints>
         <properties/>
@@ -112,7 +112,7 @@
           <tabbedpane id="d5751" binding="tabbedPane2" default-binding="true">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="5" vsize-policy="3" hsize-policy="3" anchor="0" fill="3" indent="0" use-parent-layout="false">
-                <preferred-size width="200" height="200"/>
+                <preferred-size width="200" height="400"/>
               </grid>
             </constraints>
             <properties/>
@@ -177,7 +177,7 @@
               </grid>
             </constraints>
             <properties>
-              <text value="请求地址"/>
+              <text value=""/>
             </properties>
           </component>
           <grid id="69f59" layout-manager="GridLayoutManager" row-count="1" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">

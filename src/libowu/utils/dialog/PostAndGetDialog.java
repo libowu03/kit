@@ -1,12 +1,22 @@
 package libowu.utils.dialog;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.intellij.uiDesigner.core.GridConstraints;
 import com.intellij.uiDesigner.core.GridLayoutManager;
 import com.intellij.uiDesigner.core.Spacer;
+import okhttp3.*;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import javax.swing.text.BadLocationException;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.IOException;
+import java.util.HashMap;
 
 public class PostAndGetDialog extends JDialog {
     private JPanel contentPane;
@@ -22,15 +32,159 @@ public class PostAndGetDialog extends JDialog {
     private JTextArea textArea4;
     private JTextArea textArea5;
     private JTextArea textArea6;
+    private String requestType = "GET";
+    private String urlPar;
 
     public PostAndGetDialog() {
         setContentPane(contentPane);
         setModal(true);
         getRootPane().setDefaultButton(buttonOK);
 
+
         buttonOK.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                onOK();
+                //执行请求操作
+                OkHttpClient okHttpClient = new OkHttpClient();
+                Request.Builder build = new Request.Builder();
+                if (requestType.equals("GET")) {
+                    build.get().url(url.getText());
+                    if (textArea1.getText() == null || textArea1.getText().isEmpty()) {
+                        build.build();
+                    } else {
+                        //设置请求头
+                        String[] headValue = textArea2.getText().split("\n");
+                        if (headValue != null && headValue.length != 0) {
+                            for (int i = 0; i < headValue.length; i++) {
+                                try {
+                                    String[] paraTemp = headValue[i].split(":");
+                                    build.addHeader(paraTemp[0], paraTemp[1]);
+                                } catch (Exception p) {
+
+                                }
+                            }
+                        }
+                    }
+                } else if (requestType.equals("POST")) {
+                    //设置请求参数
+                    FormBody.Builder form = new FormBody.Builder();
+                    String[] value = textArea1.getText().split("\n");
+                    if (value != null && value.length != 0) {
+                        for (int i = 0; i < value.length; i++) {
+                            try {
+                                String[] paraTemp = value[i].split(":");
+                                form.add(paraTemp[0], paraTemp[1]);
+                            } catch (Exception p) {
+
+                            }
+                        }
+                    }
+                    System.out.println("执行post请求");
+                    build.post(form.build());
+
+                    //设置请求头
+                    String[] headValue = textArea2.getText().split("\n");
+                    if (headValue != null && headValue.length != 0) {
+                        for (int i = 0; i < headValue.length; i++) {
+                            String[] paraTemp = headValue[i].split(":");
+                            build.addHeader(paraTemp[0], paraTemp[1]);
+                        }
+                    }
+
+                    //如果存在body，则设置body
+                    if (textArea3.getText() != null && !textArea3.getText().isEmpty()) {
+                        String jsonBody = textArea3.getText();
+                        MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                        RequestBody body = RequestBody.create(JSON, jsonBody);
+                        build.post(body);
+                    }
+
+                }
+
+                okHttpClient.newCall(build.build()).enqueue(new Callback() {
+                    @Override
+                    public void onFailure(Call call, IOException e) {
+                        textArea4.setText("请求失败，原因：" + e.getLocalizedMessage());
+                    }
+
+                    @Override
+                    public void onResponse(Call call, Response response) throws IOException {
+                        String body = response.body().string();
+                        try {
+                            JsonParser jsonParser = new JsonParser();
+                            JsonObject jsonObject = jsonParser.parse(body).getAsJsonObject();
+                            Gson gson = new GsonBuilder().setPrettyPrinting().create();
+                            String result = gson.toJson(jsonObject);
+                            textArea4.setText(result);
+                        } catch (Exception j) {
+                            textArea4.setText(body);
+                        }
+                        response.body().close();
+                    }
+                });
+            }
+        });
+
+        url.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                try {
+                    if (!url.getText().contains("?")) {
+                        return;
+                    }
+                    textArea1.setText(url.getText().substring(url.getText().indexOf("?") + 1).replaceAll("&", "\n").replaceAll("=", ":"));
+                } catch (Exception p) {
+
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                try {
+                    if (!url.getText().contains("?")) {
+                        return;
+                    }
+                    textArea1.setText(url.getText().substring(url.getText().indexOf("?") + 1).replaceAll("&", "\n").replaceAll(":", "="));
+                } catch (Exception p) {
+
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
+            }
+        });
+
+        textArea1.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                try {
+                    if (url.getText().contains("?")) {
+                        url.setText(textArea1.getText().replaceAll("\n", "&"));
+                    } else {
+                        url.setText("?" + textArea1.getText().replaceAll("\n", "&"));
+                    }
+                } catch (Exception p) {
+
+                }
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                try {
+                    if (url.getText().contains("?")) {
+                        url.setText(textArea1.getText().replaceAll("\n", "&"));
+                    } else {
+                        url.setText("?" + textArea1.getText().replaceAll("\n", "&"));
+                    }
+                } catch (Exception p) {
+
+                }
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
             }
         });
 
@@ -54,6 +208,36 @@ public class PostAndGetDialog extends JDialog {
                 onCancel();
             }
         }, KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, 0), JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
+        comboBox1.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                requestType = (String) e.getItem();
+            }
+        });
+
+        textArea1.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+
+            }
+
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+
+            }
+        });
+        url.addFocusListener(new FocusAdapter() {
+            @Override
+            public void focusGained(FocusEvent e) {
+                super.focusGained(e);
+                //url.setText("");
+            }
+        });
     }
 
     private void onOK() {
@@ -99,14 +283,14 @@ public class PostAndGetDialog extends JDialog {
         panel2.setLayout(new GridLayoutManager(1, 2, new Insets(0, 0, 0, 0), -1, -1, true, false));
         panel1.add(panel2, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, null, null, 0, false));
         buttonOK = new JButton();
-        buttonOK.setText("OK");
+        buttonOK.setText("开始请求");
         panel2.add(buttonOK, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         buttonCancel = new JButton();
-        buttonCancel.setText("Cancel");
+        buttonCancel.setText("取消");
         panel2.add(buttonCancel, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel3 = new JPanel();
         panel3.setLayout(new GridLayoutManager(4, 5, new Insets(0, 0, 0, 0), -1, -1));
-        contentPane.add(panel3, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(1200, 400), null, 0, false));
+        contentPane.add(panel3, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(1200, 600), null, 0, false));
         tabbedPane1 = new JTabbedPane();
         panel3.add(tabbedPane1, new GridConstraints(1, 0, 1, 5, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(200, 200), null, 0, false));
         final JScrollPane scrollPane1 = new JScrollPane();
@@ -122,7 +306,7 @@ public class PostAndGetDialog extends JDialog {
         textArea3 = new JTextArea();
         scrollPane3.setViewportView(textArea3);
         tabbedPane2 = new JTabbedPane();
-        panel3.add(tabbedPane2, new GridConstraints(3, 0, 1, 5, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(200, 200), null, 0, false));
+        panel3.add(tabbedPane2, new GridConstraints(3, 0, 1, 5, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(200, 400), null, 0, false));
         final JScrollPane scrollPane4 = new JScrollPane();
         tabbedPane2.addTab("body", scrollPane4);
         textArea4 = new JTextArea();
@@ -142,7 +326,7 @@ public class PostAndGetDialog extends JDialog {
         comboBox1.setModel(defaultComboBoxModel1);
         panel3.add(comboBox1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         url = new JTextField();
-        url.setText("请求地址");
+        url.setText("");
         panel3.add(url, new GridConstraints(0, 1, 1, 4, GridConstraints.ANCHOR_WEST, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_FIXED, null, new Dimension(150, -1), null, 0, false));
         final JPanel panel4 = new JPanel();
         panel4.setLayout(new GridLayoutManager(1, 4, new Insets(0, 0, 0, 0), -1, -1));
@@ -167,5 +351,4 @@ public class PostAndGetDialog extends JDialog {
     public JComponent $$$getRootComponent$$$() {
         return contentPane;
     }
-
 }
