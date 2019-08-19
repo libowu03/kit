@@ -19,6 +19,8 @@ public class LinghitUtil extends JDialog {
     private JButton colorPick;
     private JButton jsonForm;
     private JButton encodeBtn;
+    private JButton postAndGet;
+    private JButton fileUtil;
     private boolean isColorPicker = false;
     private Robot r;
 
@@ -157,6 +159,17 @@ public class LinghitUtil extends JDialog {
                 EncodeDialog dialog = new EncodeDialog();
                 dialog.setSize(1200, 700);
                 setPosition(dialog, 1200, 700);
+                dialog.setLocationRelativeTo(null);//居中
+                dialog.pack();
+                dialog.setVisible(true);
+            }
+        });
+        postAndGet.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                PostAndGetDialog dialog = new PostAndGetDialog();
+                dialog.setSize(1200, 900);
+                setPosition(dialog, 1200, 900);
                 dialog.setLocationRelativeTo(null);//居中
                 dialog.pack();
                 dialog.setVisible(true);

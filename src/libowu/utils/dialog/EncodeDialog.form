@@ -42,6 +42,7 @@
                       </grid>
                     </constraints>
                     <properties>
+                      <lineWrap value="true"/>
                       <text value="输入"/>
                     </properties>
                   </component>

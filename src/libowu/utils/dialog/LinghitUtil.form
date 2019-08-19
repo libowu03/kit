@@ -73,12 +73,20 @@
               <text value="编码工具"/>
             </properties>
           </component>
-          <component id="5723f" class="javax.swing.JButton" binding="buttonCancel">
+          <component id="5cff8" class="javax.swing.JButton" binding="postAndGet">
             <constraints>
               <grid row="3" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
             </constraints>
             <properties>
-              <text value="退出"/>
+              <text value="在线请求"/>
+            </properties>
+          </component>
+          <component id="a6ca5" class="javax.swing.JButton" binding="fileUtil">
+            <constraints>
+              <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+            </constraints>
+            <properties>
+              <text value="文本工具"/>
             </properties>
           </component>
         </children>
