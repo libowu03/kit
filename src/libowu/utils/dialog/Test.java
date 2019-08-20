@@ -10,6 +10,11 @@ import java.util.List;
 
 public class Test {
     public static void main(String[] args) {
-        System.out.print(EncodedUtils.urlTostr("%C4%E3%BA%C3","GB2312"));
+        String test = "niha?noin?fdkf";
+        String[] info = test.split("\\?");
+        for (String a:info) {
+            System.out.println(a);
+        }
+        System.out.print(info);
     }
 }
