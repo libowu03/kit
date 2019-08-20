@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.your.company.unique.plugin.id</id>
   <name>工具包</name>
-  <version>1.1</version>
+  <version>1.2</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
   <description><![CDATA[
@@ -31,6 +31,12 @@
     <action id="libowu.utils.Findview" class="libowu.utils.Findview" text="工具包" description="工具包">
       <add-to-group group-id="ToolsMenu" anchor="after" relative-to-action="AndroidToolsGroup"/>
         <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl COMMA"/>
+    </action>
+    <action id="libowu.language" class="libowu.utils.Language" text="简繁体转换" description="简繁体转换">
+      <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl PERIOD"/>
+    </action>
+    <action id="libowu.getAndpost" class="libowu.utils.PostAndGet" text="在线请求" description="在线请求">
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt P"/>
     </action>
   </actions>
 

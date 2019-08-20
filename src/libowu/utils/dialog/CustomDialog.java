@@ -70,7 +70,7 @@ public class CustomDialog extends JDialog {
                 Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
                 Transferable tText = new StringSelection(textArea1.getText());
                 clip.setContents(tText, null);
-                Messages.showInfoMessage("复制成功", "提示");
+                //Messages.showInfoMessage("复制成功", "提示");
             }
         });
     }

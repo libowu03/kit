@@ -261,7 +261,7 @@ public class PostAndGetDialog extends JDialog {
                 Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
                 Transferable tText = new StringSelection(textArea4.getText());
                 clip.setContents(tText, null);
-                Messages.showInfoMessage("复制成功", "提示");
+                //Messages.showInfoMessage("复制成功", "提示");
             }
         });
     }

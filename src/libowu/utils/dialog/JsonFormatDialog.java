@@ -71,7 +71,7 @@ public class JsonFormatDialog extends JDialog {
                 Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
                 Transferable tText = new StringSelection(textArea2.getText());
                 clip.setContents(tText, null);
-                Messages.showInfoMessage("复制成功", "温馨提示");
+                //Messages.showInfoMessage("复制成功", "温馨提示");
             }
         });
         compress.addActionListener(new ActionListener() {

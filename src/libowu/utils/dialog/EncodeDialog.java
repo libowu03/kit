@@ -85,7 +85,7 @@ public class EncodeDialog extends JDialog {
                 Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
                 Transferable tText = new StringSelection(outUnicode.getText());
                 clip.setContents(tText, null);
-                Messages.showInfoMessage("复制成功", "提示");
+                //Messages.showInfoMessage("复制成功", "提示");
             }
         });
         encode.addActionListener(new ActionListener() {
@@ -115,7 +115,7 @@ public class EncodeDialog extends JDialog {
                 Clipboard clip = Toolkit.getDefaultToolkit().getSystemClipboard();
                 Transferable tText = new StringSelection(textArea6.getText());
                 clip.setContents(tText, null);
-                Messages.showInfoMessage("复制成功", "提示");
+                //Messages.showInfoMessage("复制成功", "提示");
             }
         });
         textArea5.addFocusListener(new FocusAdapter() {
