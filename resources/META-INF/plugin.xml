@@ -1,7 +1,7 @@
 <idea-plugin>
   <id>com.your.company.unique.plugin.id</id>
   <name>工具包</name>
-  <version>1.2</version>
+  <version>1.22</version>
   <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
   <description><![CDATA[
@@ -33,10 +33,10 @@
         <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl COMMA"/>
     </action>
     <action id="libowu.language" class="libowu.utils.Language" text="简繁体转换" description="简繁体转换">
-      <keyboard-shortcut keymap="$default" first-keystroke="shift ctrl PERIOD"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt CLOSE_BRACKET"/>
     </action>
     <action id="libowu.getAndpost" class="libowu.utils.PostAndGet" text="在线请求" description="在线请求">
-      <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt P"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt OPEN_BRACKET"/>
     </action>
   </actions>
 
