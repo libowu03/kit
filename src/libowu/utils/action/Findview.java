@@ -1,5 +1,4 @@
 package libowu.utils.action;
-
 import com.google.gson.Gson;
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;
@@ -57,8 +56,8 @@ public class Findview extends AnAction {
         dialog.setLocation(width/2-250,height/2 - 150);//居中
         dialog.pack();
         dialog.setVisible(true);
-        //Editor data = e.getData(PlatformDataKeys.EDITOR);
-        //SelectionModel selectionModel = data.getSelectionModel();
+        //activity_edit_collect
+        //activity_takefangwei
     }
 
 

@@ -17,7 +17,9 @@ import com.intellij.psi.xml.XmlDocument;
 import com.intellij.psi.xml.XmlFile;
 import com.intellij.psi.xml.XmlTag;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class FindViewByXml extends AnAction {
     private HashMap<String,String> map;
@@ -59,13 +61,27 @@ public class FindViewByXml extends AnAction {
             @Override
             public void run() {
                 StringBuffer stringBuffer = new StringBuffer();
+                HashMap<String,String> importPackage = new HashMap<>();
                 for (String key:map.keySet()){
-                    stringBuffer.append("\tprivate "+map.get(key)+" "+key+";\n");
+                    if (!map.get(key).contains(".")){
+                        importPackage.put(map.get(key),"import android.widget."+map.get(key)+";\n");
+                        stringBuffer.append("\tprivate "+map.get(key)+" "+key+";\n");
+                    }else {
+                        importPackage.put(map.get(key),"import "+map.get(key)+";\n");
+                        stringBuffer.append("\tprivate "+map.get(key).substring(map.get(key).lastIndexOf(".")+1)+" "+key+";\n");
+                    }
                     //System.out.println(key+","+map.get(key));
                 }
-                System.out.println(stringBuffer.toString());
-                document.insertString(document.getText().indexOf("{")+1,"\n"+stringBuffer.toString());
 
+                StringBuffer packageResult = new StringBuffer();
+                for (String key:importPackage.keySet()){
+                    packageResult.append(importPackage.get(key));
+                }
+                System.out.println(stringBuffer.toString());
+                //在类中写入属性
+                document.insertString(document.getText().indexOf("{")+1,"\n"+stringBuffer.toString());
+                //写入导包的代码
+                document.insertString(document.getText().indexOf(";")+1,"\n"+packageResult.toString());
 
             }
         };

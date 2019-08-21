@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:compass="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fslp_background_2">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fangXiang"
+                style="@style/fslp_shijing_fontStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/fslp_color_1"
+                android:textSize="14sp"
+                compass:layout_constraintLeft_toLeftOf="parent"
+                compass:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fangWei"
+                style="@style/fslp_shijing_fontStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/fslp_color_1"
+                android:textSize="14sp"
+                compass:layout_constraintRight_toRightOf="parent"
+                compass:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                style="@style/fslp_base_widget"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/fslp_meida"
+                android:background="@drawable/fslp_fangxiang_triangle"
+                compass:layout_constraintLeft_toLeftOf="parent"
+                compass:layout_constraintRight_toRightOf="parent"
+                compass:layout_constraintTop_toTopOf="parent"
+                android:visibility="visible"/>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/fslp_compass_ll"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:clickable="false"
+                android:orientation="vertical"
+                compass:layout_constraintTop_toBottomOf="@id/fangWei"
+                compass:layout_constraintBottom_toTopOf="@id/otherOption"
+                compass:layout_constraintVertical_weight="6">
+
+                <com.mmc.fengshui.pass.view.CompassView
+                    android:id="@+id/luopan"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    compass:layout_constraintVertical_weight="7"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="7dp"
+                    android:clickable="true"
+                    compass:bubble="@drawable/fslp_fangxiang_bubble"
+                    compass:compass="@drawable/fslp_fangxiang_dish"
+                    compass:pointer="@drawable/fslp_fangxiang_pointer"
+                    compass:layout_constraintTop_toTopOf="parent"
+                    compass:layout_constraintBottom_toTopOf="@id/fslp_function_btn_group"/>
+
+
+                <LinearLayout
+                    android:id="@+id/fslp_function_btn_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    compass:layout_constraintTop_toBottomOf="@id/luopan"
+                    compass:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="6dp">
+
+                    <android.support.constraint.ConstraintLayout
+                        android:id="@+id/changeBtn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginRight="25dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:id="@+id/changeLuoPanBtnImg"
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginLeft="6dp"
+                            android:layout_marginRight="6dp"
+                            android:src="@drawable/fslp_changeluopan_btn"
+                            compass:layout_constraintLeft_toLeftOf="parent"
+                            compass:layout_constraintRight_toRightOf="parent"
+                            compass:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/redPoint"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/fslp_red_point"
+                            compass:layout_constraintRight_toRightOf="parent"
+                            compass:layout_constraintTop_toTopOf="parent" />
+
+                        <TextView
+                            android:id="@+id/changeLuoPanText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="6dp"
+                            android:gravity="center_horizontal"
+                            android:text="@string/fslp_persission_compass_change_text"
+                            android:textSize="12dp"
+                            compass:layout_constraintLeft_toLeftOf="parent"
+                            compass:layout_constraintRight_toRightOf="parent"
+                            compass:layout_constraintTop_toBottomOf="@id/changeLuoPanBtnImg" />
+                    </android.support.constraint.ConstraintLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fslp_caiwei_luopan"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:src="@drawable/fslp_caiwei_luopan"
+                            android:layout_gravity="center_horizontal"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="2dp"
+                            android:textSize="12dp"
+                            android:text="@string/fslp_permission_compass_caiwei" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/fslp_xuankong_feixing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="25dp"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/fslp_xuankong" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="2dp"
+                            android:textSize="12dp"
+                            android:text="@string/fslp_permission_compass_xuankong" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/payHomeAnalysis"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="30dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/fslp_jiajv" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="6dp"
+                            android:textSize="12dp"
+                            android:text="@string/fslp_persission_compass_home_analysis" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </android.support.constraint.ConstraintLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:background="@color/transparent"
+                android:clickable="true"
+                compass:layout_constraintLeft_toLeftOf="parent"
+                compass:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/scaleBigger"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/fslp_scale_big"
+                compass:layout_constraintLeft_toLeftOf="parent"
+                compass:layout_constraintTop_toTopOf="@id/fslp_compass_ll" />
+
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/fslp_scale_small"
+                android:id="@+id/scaleSmaller"
+                compass:layout_constraintTop_toTopOf="@id/fslp_compass_ll"
+                compass:layout_constraintLeft_toRightOf="@id/scaleBigger"
+                android:layout_marginLeft="10dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/fslp_lock_btn"
+                android:id="@+id/lockBt"
+                compass:layout_constraintRight_toRightOf="parent"
+                compass:layout_constraintTop_toTopOf="@id/fslp_compass_ll"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <android.support.constraint.ConstraintLayout
+                android:id="@+id/otherOption"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:visibility="visible"
+                compass:layout_constraintTop_toBottomOf="@id/fslp_compass_ll"
+                compass:layout_constraintVertical_weight="4"
+                compass:layout_constraintBottom_toBottomOf="parent">
+
+                <LinearLayout
+                    android:id="@+id/fslp_btn_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="80dp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    compass:layout_constraintTop_toBottomOf="@id/fslpMakeCurrent">
+
+
+                    <Button
+                        android:id="@+id/fslp_compass_btn_enter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="44dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:background="@drawable/fslp_button_dialog_bg3"
+                        android:paddingLeft="60dp"
+                        android:paddingRight="60dp"
+                        android:text="@string/fslp_tkfangwei_enter"
+                        android:textColor="@color/oms_mmc_white"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+                <TextView
+                    android:id="@+id/fslpMakeCurrent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="5dp"
+                    android:text="@string/fslp_position_make_current"
+                    android:textColor="@color/fslp_base_text_3"
+                    compass:layout_constraintLeft_toLeftOf="parent"
+                    compass:layout_constraintRight_toRightOf="parent"
+                    compass:layout_constraintTop_toTopOf="parent" />
+
+
+                <com.mmc.fengshui.pass.view.ResizableImageView
+                    android:id="@+id/banner"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:visibility="visible"
+                    compass:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginRight="15dp"/>
+            </android.support.constraint.ConstraintLayout>
+
+
+        </android.support.constraint.ConstraintLayout>
+
+        <include
+            layout="@layout/layout_guide"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <com.mmc.fengshui.pass.view.guide.view.GuideView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/guideView"
+        compass:maskColor="#cc000000"
+        android:visibility="gone"/>
+</FrameLayout>
