@@ -20,6 +20,7 @@ public class LinghitUtil extends JDialog {
     private JButton encodeBtn;
     private JButton postAndGet;
     private JButton fileUtil;
+    private JButton test;
     private boolean isColorPicker = false;
     private Robot r;
 
@@ -167,6 +168,15 @@ public class LinghitUtil extends JDialog {
                 dialog.setVisible(true);
             }
         });
+        test.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                TestTree dialog = new TestTree();
+                dialog.setLocationRelativeTo(null);//居中
+                dialog.pack();
+                dialog.setVisible(true);
+            }
+        });
     }
 
     private void onOK() {
@@ -212,13 +222,13 @@ public class LinghitUtil extends JDialog {
         contentPane.setLayout(new GridLayoutManager(2, 1, new Insets(10, 10, 10, 10), -1, -1));
         contentPane.setToolTipText("");
         final JPanel panel1 = new JPanel();
-        panel1.setLayout(new GridLayoutManager(5, 2, new Insets(10, 0, 0, 0), -1, -1));
+        panel1.setLayout(new GridLayoutManager(6, 2, new Insets(10, 0, 0, 0), -1, -1));
         contentPane.add(panel1, new GridConstraints(1, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(500, 300), null, 0, true));
         changeLanguage = new JButton();
         changeLanguage.setText("简繁体转换");
         panel1.add(changeLanguage, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final Spacer spacer1 = new Spacer();
-        panel1.add(spacer1, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
+        panel1.add(spacer1, new GridConstraints(5, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_VERTICAL, 1, GridConstraints.SIZEPOLICY_WANT_GROW, null, null, null, 0, false));
         timeStamp = new JButton();
         timeStamp.setText("时间工具");
         panel1.add(timeStamp, new GridConstraints(0, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
@@ -240,6 +250,9 @@ public class LinghitUtil extends JDialog {
         fileUtil = new JButton();
         fileUtil.setText("文本工具");
         panel1.add(fileUtil, new GridConstraints(3, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
+        test = new JButton();
+        test.setText("测试");
+        panel1.add(test, new GridConstraints(4, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JLabel label1 = new JLabel();
         label1.setText("工具集合");
         contentPane.add(label1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_NONE, GridConstraints.SIZEPOLICY_FIXED, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));

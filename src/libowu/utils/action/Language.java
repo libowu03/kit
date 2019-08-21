@@ -1,4 +1,4 @@
-package libowu.utils;
+package libowu.utils.action;
 
 import com.intellij.openapi.actionSystem.AnAction;
 import com.intellij.openapi.actionSystem.AnActionEvent;

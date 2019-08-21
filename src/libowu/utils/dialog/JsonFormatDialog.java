@@ -48,9 +48,37 @@ public class JsonFormatDialog extends JDialog {
         format.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String string = "{\n" +
+                        "    \"isShow\":true,\n" +
+                        "    \"maxCount\":2,\n" +
+                        "    \"data\":[\n" +
+                        "        {\n" +
+                        "            \"imgUrl\":\"https://ljms.ggwan.com/image/mmc-ljms/e4df6424d16579-601x699.png\",\n" +
+                        "            \"actionUrl\":\"luopan\",\n" +
+                        "            \"id\":\"\",\n" +
+                        "            \"type\":\"2\",\n" +
+                        "\t\t\t\"data\":\"isUnlockCompass\"\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"imgUrl\":\"https://ljms.ggwan.com/image/mmc-ljms/538ef369b20fb1-594x764.png\",\n" +
+                        "            \"actionUrl\":\"caiweiluopan\",\n" +
+                        "            \"id\":\"\",\n" +
+                        "            \"type\":\"2\",\n" +
+                        "\t\t\t\"data\":\"isUnlockJxlp\"\n" +
+                        "        },\n" +
+                        "        {\n" +
+                        "            \"imgUrl\":\"https://ljms.ggwan.com/image/mmc-ljms/5d6a2d875a2558-560x663.png\",\n" +
+                        "            \"actionUrl\":\"vip\",\n" +
+                        "            \"id\":\"\",\n" +
+                        "            \"type\":\"2\",\n" +
+                        "\t\t\t\"data\":\"\"\n" +
+                        "        }\n" +
+                        "    ]\n" +
+                        "}";
                 try {
                     JsonParser jsonParser = new JsonParser();
-                    JsonObject jsonObject = jsonParser.parse(textArea1.getText()).getAsJsonObject();
+                    //JsonObject jsonObject = jsonParser.parse(textArea1.getText()).getAsJsonObject();
+                    JsonObject jsonObject = jsonParser.parse(string).getAsJsonObject();
                     Gson gson = new GsonBuilder().setPrettyPrinting().create();
                     String result = gson.toJson(jsonObject);
                     textArea2.setText(result);
