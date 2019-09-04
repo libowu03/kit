@@ -7,14 +7,12 @@ import libowu.utils.utils.TimeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class Test {
     public static void main(String[] args) {
-        String test = "niha?noin?fdkf";
-        String[] info = test.split("\\?");
-        for (String a:info) {
-            System.out.println(a);
-        }
-        System.out.print(info);
+        Random random = new Random();
+        random.setSeed(100);
+        
     }
 }

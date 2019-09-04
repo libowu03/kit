@@ -3,7 +3,7 @@
   <grid id="cbd77" binding="contentPane" layout-manager="GridLayoutManager" row-count="1" column-count="1" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="48" y="54" width="532" height="297"/>
+      <xy x="48" y="54" width="7429" height="297"/>
     </constraints>
     <properties/>
     <border type="none"/>
@@ -27,7 +27,7 @@
             <properties/>
             <border type="none"/>
             <children>
-              <grid id="4ad9f" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="4ad9f" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="true" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="Unicode"/>
@@ -44,6 +44,7 @@
                     <properties>
                       <lineWrap value="true"/>
                       <text value="输入"/>
+                      <wrapStyleWord value="true"/>
                     </properties>
                   </component>
                   <component id="86fa" class="javax.swing.JTextArea" binding="outUnicode">
@@ -53,7 +54,9 @@
                       </grid>
                     </constraints>
                     <properties>
+                      <lineWrap value="true"/>
                       <text value="输出"/>
+                      <wrapStyleWord value="true"/>
                     </properties>
                   </component>
                   <component id="ddf42" class="javax.swing.JButton" binding="cnToUnicode">
@@ -82,7 +85,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="f54ee" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="f54ee" layout-manager="GridLayoutManager" row-count="3" column-count="3" same-size-horizontally="false" same-size-vertically="true" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="UTF-8"/>
@@ -96,7 +99,10 @@
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <lineWrap value="true"/>
+                      <wrapStyleWord value="true"/>
+                    </properties>
                   </component>
                   <component id="3af5d" class="javax.swing.JTextArea" binding="textArea4" default-binding="true">
                     <constraints>
@@ -104,7 +110,10 @@
                         <preferred-size width="150" height="50"/>
                       </grid>
                     </constraints>
-                    <properties/>
+                    <properties>
+                      <lineWrap value="true"/>
+                      <wrapStyleWord value="true"/>
+                    </properties>
                   </component>
                   <component id="6df58" class="javax.swing.JButton" binding="utfToCn">
                     <constraints>
@@ -132,7 +141,7 @@
                   </component>
                 </children>
               </grid>
-              <grid id="f1c65" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+              <grid id="f1c65" layout-manager="GridLayoutManager" row-count="4" column-count="3" same-size-horizontally="false" same-size-vertically="true" hgap="-1" vgap="-1">
                 <margin top="0" left="0" bottom="0" right="0"/>
                 <constraints>
                   <tabbedpane title="URL"/>
@@ -147,7 +156,9 @@
                       </grid>
                     </constraints>
                     <properties>
+                      <lineWrap value="true"/>
                       <text value="输出"/>
+                      <wrapStyleWord value="true"/>
                     </properties>
                   </component>
                   <component id="f6cde" class="javax.swing.JTextArea" binding="textArea6" default-binding="true">
@@ -157,7 +168,9 @@
                       </grid>
                     </constraints>
                     <properties>
+                      <lineWrap value="true"/>
                       <text value="输出"/>
+                      <wrapStyleWord value="true"/>
                     </properties>
                   </component>
                   <component id="1f2c7" class="javax.swing.JButton" binding="deCodeing">

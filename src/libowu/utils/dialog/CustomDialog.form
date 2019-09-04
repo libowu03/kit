@@ -76,12 +76,10 @@
         </properties>
         <border type="none"/>
         <children>
-          <component id="4f439" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
+          <component id="2c56c" class="javax.swing.JTextArea" binding="textArea1" default-binding="true">
             <constraints/>
             <properties>
-              <enabled value="true"/>
               <lineWrap value="true"/>
-              <text value=""/>
               <wrapStyleWord value="true"/>
             </properties>
           </component>

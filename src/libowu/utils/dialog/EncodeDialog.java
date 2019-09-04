@@ -168,14 +168,17 @@ public class EncodeDialog extends JDialog {
         tabbedPane1 = new JTabbedPane();
         panel1.add(tabbedPane1, new GridConstraints(0, 0, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, null, new Dimension(200, 200), null, 0, false));
         final JPanel panel2 = new JPanel();
-        panel2.setLayout(new GridLayoutManager(4, 3, new Insets(0, 0, 0, 0), -1, -1));
+        panel2.setLayout(new GridLayoutManager(4, 3, new Insets(0, 0, 0, 0), -1, -1, false, true));
         tabbedPane1.addTab("Unicode", panel2);
         inputUnicode = new JTextArea();
         inputUnicode.setLineWrap(true);
         inputUnicode.setText("输入");
+        inputUnicode.setWrapStyleWord(true);
         panel2.add(inputUnicode, new GridConstraints(0, 0, 4, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         outUnicode = new JTextArea();
+        outUnicode.setLineWrap(true);
         outUnicode.setText("输出");
+        outUnicode.setWrapStyleWord(true);
         panel2.add(outUnicode, new GridConstraints(0, 2, 4, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         cnToUnicode = new JButton();
         cnToUnicode.setText("中文转Unicode");
@@ -187,11 +190,15 @@ public class EncodeDialog extends JDialog {
         copyUnicode.setText("复制结果");
         panel2.add(copyUnicode, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel3 = new JPanel();
-        panel3.setLayout(new GridLayoutManager(3, 3, new Insets(0, 0, 0, 0), -1, -1));
+        panel3.setLayout(new GridLayoutManager(3, 3, new Insets(0, 0, 0, 0), -1, -1, false, true));
         tabbedPane1.addTab("UTF-8", panel3);
         textArea3 = new JTextArea();
+        textArea3.setLineWrap(true);
+        textArea3.setWrapStyleWord(true);
         panel3.add(textArea3, new GridConstraints(0, 0, 3, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         textArea4 = new JTextArea();
+        textArea4.setLineWrap(true);
+        textArea4.setWrapStyleWord(true);
         panel3.add(textArea4, new GridConstraints(0, 2, 3, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         utfToCn = new JButton();
         utfToCn.setText("UTF-8转中文");
@@ -203,13 +210,17 @@ public class EncodeDialog extends JDialog {
         utfCopy.setText("复制");
         panel3.add(utfCopy, new GridConstraints(1, 1, 1, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_HORIZONTAL, GridConstraints.SIZEPOLICY_CAN_SHRINK | GridConstraints.SIZEPOLICY_CAN_GROW, GridConstraints.SIZEPOLICY_FIXED, null, null, null, 0, false));
         final JPanel panel4 = new JPanel();
-        panel4.setLayout(new GridLayoutManager(4, 3, new Insets(0, 0, 0, 0), -1, -1));
+        panel4.setLayout(new GridLayoutManager(4, 3, new Insets(0, 0, 0, 0), -1, -1, false, true));
         tabbedPane1.addTab("URL", panel4);
         textArea5 = new JTextArea();
+        textArea5.setLineWrap(true);
         textArea5.setText("输出");
+        textArea5.setWrapStyleWord(true);
         panel4.add(textArea5, new GridConstraints(0, 0, 4, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         textArea6 = new JTextArea();
+        textArea6.setLineWrap(true);
         textArea6.setText("输出");
+        textArea6.setWrapStyleWord(true);
         panel4.add(textArea6, new GridConstraints(0, 2, 4, 1, GridConstraints.ANCHOR_CENTER, GridConstraints.FILL_BOTH, GridConstraints.SIZEPOLICY_WANT_GROW, GridConstraints.SIZEPOLICY_WANT_GROW, null, new Dimension(150, 50), null, 0, false));
         deCodeing = new JButton();
         deCodeing.setText("解码");
@@ -234,5 +245,4 @@ public class EncodeDialog extends JDialog {
     public JComponent $$$getRootComponent$$$() {
         return contentPane;
     }
-
 }
