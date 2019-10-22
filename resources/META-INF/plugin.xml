@@ -42,6 +42,10 @@
               description="对布局文件中的view进行代码生成">
           <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt BACK_SLASH"/>
       </action>
+    <action id="libowu.tils" class="libowu.utils.action.Test" text="测试" description="测试">
+      <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+      <keyboard-shortcut keymap="$default" first-keystroke="ctrl alt C"/>
+    </action>
   </actions>
 
 </idea-plugin>
